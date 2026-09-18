@@ -6,6 +6,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 const authRouter = require("./routes/AuthRoutes");
+const documentRouter = require("./routes/DocumentRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -32,6 +33,7 @@ app.get("/api/v1", (req, res) => {
   res.json({ message: "Backend is running!" });
 });
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/documents', documentRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port = ${port}`);
